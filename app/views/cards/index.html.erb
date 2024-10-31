@@ -16,6 +16,13 @@
 </div>
 
 <h2><%= @results.present? ? "Search Results:" : "First 200 Cards:" %></h2>
+
+<%# conditional check if there is results from search and filter%>
+<% if @results.empty? && params[:query].present? %>
+  <p>No cards found for "<%= params[:query] %>". Please try a different search.</p>
+<% else %>
+
+<%# shows result of search and filter %>
 <ul>
   <% if @results.present? %>
     <% @results.each do |card| %>
@@ -31,6 +38,7 @@
     <% end %>
   <% end %>
 </ul>
+<% end %>
 
 <%= paginate @results if @results.present? %>
 <%= paginate @cards if @cards.present? %>

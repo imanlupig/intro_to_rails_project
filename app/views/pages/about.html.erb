@@ -1,6 +1,18 @@
 <h1>About</h1>
 <%= render 'layouts/navbar' %>
-<p>This application uses the Yu-Gi-Oh! API to collect and display data on various cards. The data includes details such as card type, description, attack, and defense values.</p>
+<p>
+  For this project I will be using data from the YuGiOh API. This API provides information
+  about YuGiOh TCG, such card names, type, descriptions. The data structure will display
+  card details and I will also be using Faker gem to create users and establish associations
+  between the users and some cards.
+</p>
+
+<%= image_tag("yugioh_erd_project.drawio.png", alt: "Yu-Gi-Oh API ERD Diagram") %>
+
+<p>
+  The Cards and Card Types will be linked by the card_type_id.
+  The Owners will connect to the Cards using a join table OwnerCards, allowing each owner to have multiple cards and each card having multiple owners. A many-to-many relationship.
+</p>
 
 <h2>Data Source</h2>
 <p>Data is sourced from the <a href="https://db.ygoprodeck.com/api/v7/cardinfo.php" target="_blank">Yu-Gi-Oh! API</a>, which provides comprehensive information about Yu-Gi-Oh! cards.</p>
