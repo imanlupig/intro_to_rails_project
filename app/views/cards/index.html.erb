@@ -1,15 +1,27 @@
 <h1>Welcome to YugiohApp</h1>
 <%= render 'layouts/navbar' %>
-<p>Explore the collection of Yu-Gi-Oh! cards below:</p>
 
-<div class="card-list">
-  <% @cards.each do |card| %>
-    <div class="card">
-      <h2><%= card.name %></h2>
-      <p><%= card.desc %></p>
-      <p><strong>Type:</strong> <%= card.card_type.name %></p>
-      <p><strong>Attack:</strong> <%= card.atk %></p>
-      <p><strong>Defense:</strong> <%= card.def %></p>
-    </div>
+<div id='formDiv'>
+  <%= form_with(url: cards_path, method: :get, local: true) do %>
+    <%= label_tag :query, "Search Cards:" %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search" %>
   <% end %>
 </div>
+
+<h2><%= @results.present? ? "Search Results:" : "First 200 Cards:" %></h2>
+<ul>
+  <%if @results.present? %>
+    <% @results.each do |card| %>
+    <li class="links">
+      <%= card.name %>, Card ID: <%= card.id %>, Type: <%= card.card_type&.name %>
+    </li>
+    <% end %>
+  <% else %>
+    <% @cards.each do |card|%>
+      <li> <%= card.name %> </li>
+    <% end %>
+  <% end %>
+
+</ul>
+</body>
