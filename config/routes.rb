@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   root 'pages#index'
+  resources :cards, only: [:index, :show]
   get 'about', to: 'pages#about'
 end
