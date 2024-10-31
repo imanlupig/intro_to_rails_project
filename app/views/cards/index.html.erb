@@ -31,3 +31,6 @@
     <% end %>
   <% end %>
 </ul>
+
+<%= paginate @results if @results.present? %>
+<%= paginate @cards if @cards.present? %>
