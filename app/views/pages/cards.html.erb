@@ -1,0 +1,14 @@
+<h1>Welcome to YugiohApp</h1>
+<p>Explore the collection of Yu-Gi-Oh! cards below:</p>
+
+<div class="card-list">
+  <% @cards.each do |card| %>
+    <div class="card">
+      <h2><%= card.name %></h2>
+      <p><%= card.desc %></p>
+      <p><strong>Type:</strong> <%= card.card_type.name %></p>
+      <p><strong>Attack:</strong> <%= card.atk %></p>
+      <p><strong>Defense:</strong> <%= card.def %></p>
+    </div>
+  <% end %>
+</div>
