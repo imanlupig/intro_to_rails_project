@@ -1,0 +1,12 @@
+<h1><%= @owner.name %></h1>
+
+<h2>Owned Cards</h2>
+<ul>
+  <% if @owner.cards.any? %>
+    <% @owner.cards.each do |card| %>
+      <li><%= link_to card.name, card_path(card) %> (Type: <%= card.card_type.name %>)</li>
+    <% end %>
+  <% else %>
+    <li>No cards owned</li>
+  <% end %>
+</ul>

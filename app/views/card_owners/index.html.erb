@@ -1,15 +1,6 @@
-<h1>Card Owners and Their Cards</h1>
+<h1>Players</h1>
 <%= render 'layouts/navbar' %>
 
 <% @owners.each do |owner| %>
-  <h2><%= owner.name %></h2>
-  <ul>
-    <% if owner.cards.any? %>
-      <% owner.cards.each do |card| %>
-        <li><%= link_to card.name, card_path(card) %> (Type: <%= card.card_type.name %>)</li>
-      <% end %>
-    <% else %>
-      <li>No cards owned</li>
-    <% end %>
-  </ul>
+  <h3><%= link_to owner.name, card_owner_path(owner) %></h3>
 <% end %>
