@@ -1,0 +1,2 @@
+class CardOwner < ApplicationRecord
+end
