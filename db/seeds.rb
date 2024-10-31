@@ -10,16 +10,16 @@
 require 'httparty'
 require 'faker'
 
-#fetch data from YuGiOh API
+# fetch data from YuGiOh API
 API_URL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
 response = HTTParty.get(API_URL)
 cards_data = JSON.parse(response.body)["data"]
 
 cards_data.each do |card_data|
-  #find or create CardType
+  # find or create CardType
   card_type = CardType.find_or_create_by(name: card_data["type"])
 
-  #Create card with associated CardType
+  # Create card with associated CardType
   card = Card.create(
     name: card_data["name"],
     desc: card_data["desc"],

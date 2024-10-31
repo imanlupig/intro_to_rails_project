@@ -1,0 +1,5 @@
+<h1><%= @card.name %></h1>
+<p><strong>Type:</strong> <%= @card.card_type.name %></p>
+<p><strong>Description:</strong> <%= @card.desc %></p>
+<p><strong>Attack:</strong> <%= @card.atk.present? ? @card.atk : "N/A" %></p>
+<p><strong>Defense:</strong> <%= @card.def.present? ? @card.def : "N/A" %></p>

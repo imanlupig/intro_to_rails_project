@@ -1,4 +1,4 @@
-<h1>Welcome to YugiohApp</h1>
+<h1>Welcome to YugiohAPI</h1>
 <%= render 'layouts/navbar' %>
 
 <div id='formDiv'>
@@ -11,17 +11,17 @@
 
 <h2><%= @results.present? ? "Search Results:" : "First 200 Cards:" %></h2>
 <ul>
-  <%if @results.present? %>
+  <% if @results.present? %>
     <% @results.each do |card| %>
-    <li class="links">
-      <%= card.name %>, Card ID: <%= card.id %>, Type: <%= card.card_type&.name %>
-    </li>
+      <li class="links">
+        <%= link_to "#{card.name}, Card ID: #{card.id}, Type: #{card.card_type&.name}", card_path(card) %>
+      </li>
     <% end %>
   <% else %>
-    <% @cards.each do |card|%>
-      <li> <%= card.name %> </li>
+    <% @cards.each do |card| %>
+      <li>
+        <%= link_to card.name, card_path(card) %>
+      </li>
     <% end %>
   <% end %>
-
 </ul>
-</body>

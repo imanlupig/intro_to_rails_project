@@ -12,4 +12,8 @@ class CardsController < ApplicationController
   def search
     redirect_to cards_path(query: params[:query])
   end
+
+  def show
+    @card = Card.find(params[:id])
+  end
 end

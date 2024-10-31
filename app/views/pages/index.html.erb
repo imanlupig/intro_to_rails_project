@@ -3,4 +3,12 @@
   <%= render 'layouts/navbar' %>
 </header>
 
-<h2>Owners</h2>
+<h2>Players:</h2>
+<ul>
+  <% CardOwner.all.each do |player| %>
+    <li>
+      <%= player.name %>
+
+    </li>
+  <% end %>
+</ul>

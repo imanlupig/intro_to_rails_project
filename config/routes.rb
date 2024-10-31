@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root 'pages#index'
-  resources :cards, only: [:index, :show]
-  get 'about', to: 'pages#about'
+  root "pages#index"
+  resources :cards, only: [ :index, :show ]
+  resources :card_owner, only: [ :index, :show ]
+  get "about", to: "pages#about"
+  get "/owners/:id", to: "owners#show", as: "player"
 end
