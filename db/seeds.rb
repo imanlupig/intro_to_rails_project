@@ -17,7 +17,7 @@ cards_data = JSON.parse(response.body)["data"]
 
 cards_data.each do |card_data|
   #find or create CardType
-  card_type = Category.find_or_create_by(name: card_data["type"])
+  card_type = CardType.find_or_create_by(name: card_data["type"])
 
   #Create card with associated CardType
   card = Card.create(

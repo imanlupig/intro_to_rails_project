@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_31_084819) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_31_101300) do
   create_table "card_owners", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -26,6 +26,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_31_084819) do
     t.index ["card_owner_id"], name: "index_card_ownerships_on_card_owner_id"
   end
 
+  create_table "card_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.string "type"
@@ -35,6 +41,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_31_084819) do
     t.integer "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "card_type_id", null: false
+    t.index ["card_type_id"], name: "index_cards_on_card_type_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -45,4 +53,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_31_084819) do
 
   add_foreign_key "card_ownerships", "card_owners"
   add_foreign_key "card_ownerships", "cards"
+  add_foreign_key "cards", "card_types"
 end

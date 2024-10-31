@@ -1,5 +1,4 @@
-class Category < ApplicationRecord
-  #one to many relationship with Card
+class CardType < ApplicationRecord
   has_many :cards
 
   validates :name, presence: true, uniqueness: true
