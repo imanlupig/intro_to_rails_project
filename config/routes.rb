@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "pages#index"
   resources :cards, only: [ :index, :show ]
-  resources :card_owner, only: [ :index, :show ]
+  resources :card_owners, only: [ :index, :show ]
   get "about", to: "pages#about"
-  get "/owners/:id", to: "owners#show", as: "player"
 end
